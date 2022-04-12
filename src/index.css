@@ -278,6 +278,8 @@ button {
   align-items: center;
   padding: 0.75rem;
   margin: 1.5rem;
+  position: absolute;
+  top: 68.5%;  
   width: 3rem;
   height: 3rem;
   background-color: #ffffff;
@@ -286,7 +288,7 @@ button {
 }
 
 .socialIconImg {
-  width: 100%;
+  width:100%;
 }
 
 .registerLink {
