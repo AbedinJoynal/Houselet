@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { MapContainer,TileLayer } from 'react-leaflet';
-
-// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.css';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
 import { Marker, Popup } from 'react-leaflet';
-//SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Listing() {
     const [listing, setListing] = useState(null);
@@ -45,6 +44,22 @@ function Listing() {
     return (
         <main>
             {/* Slider */}
+            <Helmet>
+                <title>{listing.name}</title>
+            </Helmet>
+            <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+                {listing.imageurls.map((url, index) => (
+                    <SwiperSlide key={index}>
+                        <div
+                            style={{
+                                background: `url(${listing.imageurls[index]}) center no-repeat`,
+                                backgroundSize: 'cover',
+                            }}
+                            className="swiperSlideDiv"
+                        ></div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
             <div
                 className="shareIconDiv"
                 onClick={() => {
@@ -135,4 +150,3 @@ function Listing() {
 
 export default Listing;
 
-// https://stackoverflow.com/questions/67552020/how-to-fix-error-failed-to-compile-node-modules-react-leaflet-core-esm-pat
