@@ -65,9 +65,10 @@ button {
   color: #ffffff;
   font-weight: 600;
   font-size: 1.25rem;
-  width: 80%;
+  width: 30%;
   margin: 0 auto;
   display: flex;
+  margin-top: -25px;
   align-items: center;
   justify-content: center;
 }
